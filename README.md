@@ -1,4 +1,4 @@
-# Zan NSQ-Client
+# ZanPHP NSQ-Client
 
 ## API
 
