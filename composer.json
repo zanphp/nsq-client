@@ -1,11 +1,5 @@
 {
-    "name": "php-lib/nsq-client",
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "http://packagist.qima-inc.com"
-        }
-    },
+    "name": "zanphp/nsq-client",
     "require": {
         "zanphp/zan": "dev-master"
     },
