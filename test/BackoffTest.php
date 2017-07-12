@@ -1,8 +1,8 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Utils\Backoff;
+use ZanPHP\NSQ\Utils\Backoff;
 
 require_once __DIR__ . "/boot.php";
 

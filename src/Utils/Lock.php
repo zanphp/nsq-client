@@ -1,6 +1,6 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Utils;
+namespace ZanPHP\NSQ\Utils;
 
 
 use Zan\Framework\Foundation\Contract\Async;
@@ -9,7 +9,7 @@ use Zan\Framework\Foundation\Coroutine\Task;
 
 /**
  * Class Lock
- * @package Zan\Framework\Components\Nsq\Utils
+ * @package ZanPHP\NSQ\Utils
  *
  *  yield Lock::lock(__CLASS__);
  *  try {
@@ -61,7 +61,7 @@ final class Lock implements Async
         $callbacks = static::$callbacks[$this->lockName];
 
         foreach ($callbacks as $taskId => $callback) {
-            call_user_func($callback, null, null); // TODO catch ex
+            call_user_func($callback, null, null);
         }
         unset(static::$callbacks[$this->lockName]);
     }

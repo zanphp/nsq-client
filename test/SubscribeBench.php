@@ -1,11 +1,11 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Consumer;
-use Zan\Framework\Components\Nsq\Contract\MsgHandler;
-use Zan\Framework\Components\Nsq\Message;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\Consumer;
+use ZanPHP\NSQ\Contract\MsgHandler;
+use ZanPHP\NSQ\Message;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Coroutine\Task;
 
 require_once __DIR__ . "/boot.php";
@@ -29,11 +29,11 @@ $task = function()
     $topic = "zan_mqworker_test";
     $ch = "ch1";
     /* @var Consumer $consumer */
-    $consumer = (yield SQS::subscribe($topic, $ch, new BenchMsgHandler(), 1));
+    $consumer = (yield NSQ::subscribe($topic, $ch, new BenchMsgHandler(), 1));
 };
 
 swoole_timer_tick(1000, function() {
-    print_r(SQS::stat());
+    print_r(NSQ::stat());
     echo number_format(memory_get_usage()), "byte\n";
     echo number_format(memory_get_usage(true)), "byte\n";
 });

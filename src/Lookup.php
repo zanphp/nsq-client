@@ -1,8 +1,8 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
-use Zan\Framework\Components\Nsq\Contract\NsqdDelegate;
+use ZanPHP\NSQ\Contract\NsqdDelegate;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Common\HttpClient;
 use Zan\Framework\Network\Common\Response;

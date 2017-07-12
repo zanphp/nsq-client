@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Utils\MemoryBuffer;
-use Zan\Framework\Components\Nsq\Utils\StringBuffer;
+use ZanPHP\NSQ\Utils\MemoryBuffer;
+use ZanPHP\NSQ\Utils\StringBuffer;
 
 require_once __DIR__ . "/boot.php";
 

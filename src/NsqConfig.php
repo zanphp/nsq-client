@@ -1,6 +1,6 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
 use Zan\Framework\Utilities\Types\Arr;

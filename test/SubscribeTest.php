@@ -1,11 +1,11 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Consumer;
-use Zan\Framework\Components\Nsq\Contract\MsgHandler;
-use Zan\Framework\Components\Nsq\Message;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\Consumer;
+use ZanPHP\NSQ\Contract\MsgHandler;
+use ZanPHP\NSQ\Message;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Server\Timer\Timer;
 
@@ -35,7 +35,7 @@ $task1 = function() {
 
 
     /* @var Consumer $consumer */
-    $consumer = (yield SQS::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
+    $consumer = (yield NSQ::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
         echo "recv: " . $msg->getBody(), "\n";
         // echo $msg->getId(), "\n";
         yield taskSleep(1000);
@@ -54,7 +54,7 @@ $task2 = function() {
     $topic = "zan_mqworker_test";
     $ch = "ch1";
     $msgHandler = new TestMsgHandler();
-    yield SQS::subscribe($topic, $ch, $msgHandler);
+    yield NSQ::subscribe($topic, $ch, $msgHandler);
 };
 
 // Task::execute($task2());
@@ -64,7 +64,7 @@ $task2 = function() {
 $task2 = function() {
     $topic = "zan_mqworker_test";
     $ch = "ch1";
-    yield SQS::subscribe($topic, $ch, function(Message $msg) {
+    yield NSQ::subscribe($topic, $ch, function(Message $msg) {
         $msg->disableAutoResponse();
         $msg->finish();
         $msg->touch();
@@ -79,7 +79,7 @@ $task = function()
     $ch = "ch1";
 
     /* @var Consumer $consumer */
-    $consumer = (yield SQS::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
+    $consumer = (yield NSQ::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
         // print_r($consumer->stats());
         // var_dump($consumer->isStarved());
 

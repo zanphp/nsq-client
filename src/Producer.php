@@ -1,10 +1,10 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
-use Zan\Framework\Components\Nsq\Contract\ConnDelegate;
-use Zan\Framework\Components\Nsq\Contract\NsqdDelegate;
+use ZanPHP\NSQ\Contract\ConnDelegate;
+use ZanPHP\NSQ\Contract\NsqdDelegate;
 use Zan\Framework\Foundation\Contract\Async;
 use Zan\Framework\Foundation\Core\Debug;
 use Zan\Framework\Foundation\Coroutine\Task;

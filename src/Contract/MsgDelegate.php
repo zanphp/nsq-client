@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Contract;
+namespace ZanPHP\NSQ\Contract;
 
 
-use Zan\Framework\Components\Nsq\Message;
+use ZanPHP\NSQ\Message;
 
 interface MsgDelegate
 {

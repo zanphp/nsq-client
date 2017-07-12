@@ -1,10 +1,10 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\NsqConfig;
-use Zan\Framework\Components\Nsq\Producer;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\NsqConfig;
+use ZanPHP\NSQ\Producer;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Contract\Async;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Common\HttpClient;
@@ -15,12 +15,11 @@ require_once __DIR__ . "/boot.php";
 
 $parallelTask = function() {
     $topic = "zan_mqworker_test";
-//    (new SQS())->bootstrap(null);
 
     $task = function() {
         $topic = "zan_mqworker_test";
-        yield SQS::publish($topic, "hello");
-        yield SQS::publish($topic, "hello", "world");
+        yield NSQ::publish($topic, "hello");
+        yield NSQ::publish($topic, "hello", "world");
 
     };
 
@@ -31,7 +30,7 @@ $parallelTask = function() {
 
     yield parallel($tasks);
     swoole_timer_after(6000, function() {
-        print_r(SQS::stat());
+        print_r(NSQ::stat());
     });
 };
 // Task::execute($parallelTask());
@@ -43,7 +42,7 @@ $parallelTask = function() {
 $parallelTask = function() {
     $task = function() {
         try {
-            $lookupQaUrl = "http://sqs-qa.s.qima-inc.com:4161";
+            $lookupQaUrl = "http://" . NSQ_LOOKUP_HOST . ":4161";
             $topic = "zan_mqworker_test";
             $maxConnectionNum = 5;
             $producer = new Producer($topic, $maxConnectionNum);
@@ -83,7 +82,7 @@ $parallelTask = function() {
     };
 
 
-    $lookupQaUrl = "http://sqs-qa.s.qima-inc.com:4161";
+    $lookupQaUrl = "http://" . NSQ_LOOKUP_HOST . ":4161";
     $topic = "zan_mqworker_test";
     $maxConnectionNum = 5;
     $producer = new Producer($topic, $maxConnectionNum);
@@ -105,9 +104,9 @@ $parallelTask = function() {
     $task = function($i) {
         try {
             $topic = "zan_mqworker_test";
-            $ret1 = (yield SQS::publish($topic, "hello sqs"));
+            $ret1 = (yield NSQ::publish($topic, "hello sqs"));
             // yield taskSleep(2000);
-            $ret2 = (yield SQS::publish($topic, "hello sqs", "hello"));
+            $ret2 = (yield NSQ::publish($topic, "hello sqs", "hello"));
             yield [$ret1, $ret2];
         } catch (\Exception $ex) {
             echo_exception($ex);

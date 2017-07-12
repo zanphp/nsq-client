@@ -1,10 +1,11 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 use swoole_client as SwooleClient;
-use Zan\Framework\Components\Nsq\Contract\ConnDelegate;
-use Zan\Framework\Components\Nsq\Utils\Backoff;
+use ZanPHP\NSQ\Contract\ConnDelegate;
+use ZanPHP\NSQ\Utils\Backoff;
+use ZanPHP\NSQ\Utils\Dns;
 use Zan\Framework\Foundation\Contract\Async;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Common\DnsClient;
@@ -156,8 +157,7 @@ class Connection implements Async
         $timeout = NsqConfig::getNsqdConnectTimeout();
 
         if (!filter_var($this->host, FILTER_VALIDATE_IP)) {
-            $dnsClient = new DnsClient();
-            $this->host = (yield $dnsClient->query($this->host));
+            $this->host = (yield Dns::lookup($this->host));
         }
         Timer::after($timeout, $this->onConnectTimeout(), $this->getConnectTimeoutTimerId());
         $this->client->connect($this->host, $this->port);

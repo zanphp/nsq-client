@@ -1,10 +1,10 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
 
-use Zan\Framework\Components\Nsq\Contract\MsgHandler;
+use ZanPHP\NSQ\Contract\MsgHandler;
 
 class SimpleMsgHandler implements MsgHandler
 {

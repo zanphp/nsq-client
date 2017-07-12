@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Command;
-use Zan\Framework\Components\Nsq\Connection;
+use ZanPHP\NSQ\Command;
+use ZanPHP\NSQ\Connection;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Server\Timer\Timer;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Utils;
+namespace ZanPHP\NSQ\Utils;
 
 use Zan\Framework\Foundation\Contract\Async;
 use Zan\Framework\Network\Connection\Exception\ConnectTimeoutException;
@@ -21,7 +21,6 @@ class Dns implements Async
             }
         });
 
-        // 无需做缓存, 内部有缓存
         swoole_async_dns_lookup($domain, function($domain, $ip) use($self, $timeoutId) {
             if ($self->callback) {
                 Timer::clearAfterJob($timeoutId);

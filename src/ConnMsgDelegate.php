@@ -1,8 +1,8 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
-use Zan\Framework\Components\Nsq\Contract\MsgDelegate;
+use ZanPHP\NSQ\Contract\MsgDelegate;
 
 class ConnMsgDelegate implements MsgDelegate
 {

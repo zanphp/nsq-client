@@ -4,7 +4,7 @@
 
 ```php
 <?php
-class SQS
+class NSQ
 {
     /**
      * 订阅
@@ -123,7 +123,7 @@ class Message
 
 首先要添加nsq节点配置
 
-config/env/nsq.php
+config/${env}/nsq.php
 
 ```php
 /**
@@ -134,7 +134,7 @@ config/env/nsq.php
 return [
     // ["必填"]lookup 节点地址
     "lookup" => [
-        "http://sqs-qa.s.qima-inc.com:4161"
+        "http://xxx.yyy.zzz:4161"
     ]
 ];
 ```
@@ -145,10 +145,10 @@ return [
 
 ```php
 <?php
-use Zan\Framework\Components\Nsq\InitializeSQS;
+use ZanPHP\NSQ\InitializeNSQ;
 
 return [
-    InitializeSQS::class,
+    InitializeNSQ::class,
 ];
 ```
 
@@ -169,9 +169,9 @@ function taskPub()
     ];
 
     /* @var Producer $producer */
-    $ok = (yield SQS::publish($topic, $oneMsg));
-    $ok = (yield SQS::publish($topic, "hello", "hi"));
-    $ok = (yield SQS::publish($topic, ...$multiMsgs));
+    $ok = (yield NSQ::publish($topic, $oneMsg));
+    $ok = (yield NSQ::publish($topic, "hello", "hi"));
+    $ok = (yield NSQ::publish($topic, ...$multiMsgs));
 }
 
 Task::execute(taskPub());
@@ -187,7 +187,7 @@ $task1 = function() {
     $topic = "zan_mqworker_test";
     $ch = "ch1";
     /* @var Consumer $consumer */
-    $consumer = (yield SQS::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
+    $consumer = (yield NSQ::subscribe($topic, $ch, function(Message $msg, Consumer $consumer) {
         echo $msg->getId(), "\n";
         yield taskSleep(1000);
     }));
@@ -202,7 +202,7 @@ $task2 = function() {
     $topic = "zan_mqworker_test";
     $ch = "ch1";
     $msgHandler = new TestMsgHandler();
-    yield SQS::subscribe($topic, $ch, $msgHandler);
+    yield NSQ::subscribe($topic, $ch, $msgHandler);
 };
 Task::execute($task2());
 
@@ -210,7 +210,7 @@ Task::execute($task2());
 $task2 = function() {
     $topic = "zan_mqworker_test";
     $ch = "ch1";
-    yield SQS::subscribe($topic, $ch, function(Message $msg) {
+    yield NSQ::subscribe($topic, $ch, function(Message $msg) {
         // $msg->finish();
         // $msg->touch();
         // $msg->requeue($delay, $isBackoff);
@@ -230,7 +230,7 @@ $task2 = function() {
 return [
     // ["必填"]lookup 节点地址
     "lookup" => [
-        "http://sqs-qa.s.qima-inc.com:4161"
+        "http://xxx.yyy.zzz:4161"
     ],
 
     // ["建议填写"] 需要publish的topic列表, 预先配置, 会在workerStart时候建立好连接

@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Producer;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\Producer;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Coroutine\Task;
 
 require_once __DIR__ . "/boot.php";
@@ -22,7 +22,7 @@ function taskPub()
 
     /* @var Producer $producer */
     try {
-        $ok = (yield SQS::publish($topic, $oneMsg));
+        $ok = (yield NSQ::publish($topic, $oneMsg));
         var_dump($ok);
     } catch (\Throwable $t) {
         echo_exception($t);
@@ -31,7 +31,7 @@ function taskPub()
     }
 
     try {
-        $ok = (yield SQS::publish($topic, "hello", "hi"));
+        $ok = (yield NSQ::publish($topic, "hello", "hi"));
         var_dump($ok);
     } catch (\Throwable $t) {
         echo_exception($t);
@@ -40,7 +40,7 @@ function taskPub()
     }
 
     try {
-        $ok = (yield SQS::publish($topic, ...$multiMsgs));
+        $ok = (yield NSQ::publish($topic, ...$multiMsgs));
         var_dump($ok);
     } catch (\Throwable $t) {
         echo_exception($t);

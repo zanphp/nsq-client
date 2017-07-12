@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Zan\\Framework\\Components\\Nsq\\": "src/"
+            "ZanPHP\\NSQ\\": "src/"
         },
         "classmap": [
             "src/"
@@ -21,7 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Zan\\Framework\\Components\\Nsq\\Test\\": "test/"
+            "ZanPHP\\NSQ\\Test\\": "test/"
         },
         "classmap": [
 

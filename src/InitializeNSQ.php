@@ -1,17 +1,17 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
-use Zan\Framework\Components\Nsq\Utils\Binary;
-use Zan\Framework\Components\Nsq\Utils\MemoryBuffer;
-use Zan\Framework\Components\Nsq\Utils\ObjectPool;
-use Zan\Framework\Components\Nsq\Utils\StringBuffer;
+use ZanPHP\NSQ\Utils\Binary;
+use ZanPHP\NSQ\Utils\MemoryBuffer;
+use ZanPHP\NSQ\Utils\ObjectPool;
+use ZanPHP\NSQ\Utils\StringBuffer;
 use Zan\Framework\Contract\Network\Bootable;
 use Zan\Framework\Foundation\Core\Config;
 use Zan\Framework\Foundation\Coroutine\Task;
 
-class InitializeSQS implements Bootable
+class InitializeNSQ implements Bootable
 {
     /**
      * @var Producer[]

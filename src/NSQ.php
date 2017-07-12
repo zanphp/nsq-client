@@ -1,13 +1,13 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
-use Zan\Framework\Components\Nsq\Contract\MsgHandler;
-use Zan\Framework\Components\Nsq\Utils\Lock;
+use ZanPHP\NSQ\Contract\MsgHandler;
+use ZanPHP\NSQ\Utils\Lock;
 use Zan\Framework\Utilities\Types\Json;
 
-class SQS
+class NSQ
 {
     /**
      * @param string $topic
@@ -39,10 +39,10 @@ class SQS
             throw new NsqException("no nsq lookup address");
         }
 
-        if (!isset(InitializeSQS::$consumers["$topic:$channel"])) {
-            InitializeSQS::$consumers["$topic:$channel"] = [];
+        if (!isset(InitializeNSQ::$consumers["$topic:$channel"])) {
+            InitializeNSQ::$consumers["$topic:$channel"] = [];
         }
-        InitializeSQS::$consumers["$topic:$channel"][] = $consumer;
+        InitializeNSQ::$consumers["$topic:$channel"][] = $consumer;
 
         if (is_array($lookup)) {
             yield $consumer->connectToNSQLookupds($lookup);
@@ -58,12 +58,12 @@ class SQS
      */
     public static function unSubscribe($topic, $channel)
     {
-        if (!isset(InitializeSQS::$consumers["$topic:$channel"]) || !InitializeSQS::$consumers["$topic:$channel"]) {
+        if (!isset(InitializeNSQ::$consumers["$topic:$channel"]) || !InitializeNSQ::$consumers["$topic:$channel"]) {
             return false;
         }
 
         /* @var Consumer $consumer */
-        foreach (InitializeSQS::$consumers["$topic:$channel"] as $consumer) {
+        foreach (InitializeNSQ::$consumers["$topic:$channel"] as $consumer) {
             $consumer->stop();
         }
         return true;
@@ -98,14 +98,14 @@ class SQS
 
         yield Lock::lock(__CLASS__);
         try {
-            if (!isset(InitializeSQS::$producers[$topic])) {
-                yield InitializeSQS::initProducers([$topic => NsqConfig::getMaxConnectionPerTopic()]);
+            if (!isset(InitializeNSQ::$producers[$topic])) {
+                yield InitializeNSQ::initProducers([$topic => NsqConfig::getMaxConnectionPerTopic()]);
             }
         } finally {
             yield Lock::unlock(__CLASS__);
         }
 
-        $producer = InitializeSQS::$producers[$topic];
+        $producer = InitializeNSQ::$producers[$topic];
         $retry = NsqConfig::getPublishRetry();
         yield self::publishWithRetry($producer, $topic, $messages, $retry);
     }
@@ -156,13 +156,13 @@ class SQS
             "consumer" => [],
             "producer" => [],
         ];
-        foreach (InitializeSQS::$consumers as $topicCh => $consumers) {
+        foreach (InitializeNSQ::$consumers as $topicCh => $consumers) {
             /* @var Consumer $consumer */
             foreach ($consumers as $consumer) {
                 $stat["consumer"][$topicCh] = $consumer->stats();
             }
         }
-        foreach (InitializeSQS::$producers as $topic => $producer) {
+        foreach (InitializeNSQ::$producers as $topic => $producer) {
             $stat["producer"][$topic] = $producer->stats();
         }
         return $stat;

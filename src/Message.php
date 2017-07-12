@@ -1,10 +1,10 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
-use Zan\Framework\Components\Nsq\Contract\MsgDelegate;
-use Zan\Framework\Components\Nsq\Utils\Binary;
-use Zan\Framework\Components\Nsq\Utils\ObjectPool;
+use ZanPHP\NSQ\Contract\MsgDelegate;
+use ZanPHP\NSQ\Utils\Binary;
+use ZanPHP\NSQ\Utils\ObjectPool;
 use Zan\Framework\Utilities\Types\Time;
 
 

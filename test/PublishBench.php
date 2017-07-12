@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Producer;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\Producer;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Coroutine\Task;
 
 require_once __DIR__ . "/boot.php";
@@ -17,7 +17,7 @@ $taskPub = function () {
             $topic = "zan_mqworker_test";
             /* @var Producer $producer */
             while (true) {
-                yield SQS::publish($topic, $payload);
+                yield NSQ::publish($topic, $payload);
             }
         } catch (\Exception $ex) {
             echo_exception($ex);
@@ -32,6 +32,6 @@ $taskPub = function () {
     yield parallel($tasks);
 };
 
-swoole_timer_tick(1000, function() { print_r(SQS::stat()); });
+swoole_timer_tick(1000, function() { print_r(NSQ::stat()); });
 
 Task::execute($taskPub());

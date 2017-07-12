@@ -1,12 +1,12 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 
-use Zan\Framework\Components\Nsq\Contract\ConnDelegate;
-use Zan\Framework\Components\Nsq\Contract\MsgHandler;
-use Zan\Framework\Components\Nsq\Contract\NsqdDelegate;
-use Zan\Framework\Components\Nsq\Utils\Backoff;
+use ZanPHP\NSQ\Contract\ConnDelegate;
+use ZanPHP\NSQ\Contract\MsgHandler;
+use ZanPHP\NSQ\Contract\NsqdDelegate;
+use ZanPHP\NSQ\Utils\Backoff;
 use Zan\Framework\Foundation\Coroutine\Task;
 use Zan\Framework\Network\Server\Timer\Timer;
 use Zan\Framework\Utilities\Types\Time;

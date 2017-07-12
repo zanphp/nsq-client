@@ -1,5 +1,8 @@
 <?php
 
+
+define("NSQ_LOOKUP_HOST", "xxx.yyy.com");
+
 /**
  * 说明:
  * 1. 只有lookup项必填, 其他全部选填
@@ -8,7 +11,7 @@
 return [
     // ["必填"]lookup 节点地址
     "lookup" => [
-        "http://sqs-qa.s.qima-inc.com:4161"
+        "http://" . NSQ_LOOKUP_HOST . ":4161"
     ],
 
     // ["建议填写"] 需要publish的topic列表, 预先配置, 会在workerStart时候建立好连接

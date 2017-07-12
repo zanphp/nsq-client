@@ -1,14 +1,14 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Contract;
+namespace ZanPHP\NSQ\Contract;
 
-use Zan\Framework\Components\Nsq\Consumer;
-use Zan\Framework\Components\Nsq\Message;
+use ZanPHP\NSQ\Consumer;
+use ZanPHP\NSQ\Message;
 
 
 /**
  * Interface MessageHandler
- * @package Zan\Framework\Components\Nsq
+ * @package ZanPHP\NSQ
  *
  * MessageHandler is the message processing interface for Consumer.
  * Implement this interface for handlers that return whether or not message

@@ -1,8 +1,8 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Utils\Dns;
+use ZanPHP\NSQ\Utils\Dns;
 use Zan\Framework\Foundation\Coroutine\Task;
 
 require_once __DIR__ . "/boot.php";
@@ -10,7 +10,7 @@ require_once __DIR__ . "/boot.php";
 
 $task = function() {
     // success
-    $ip = (yield Dns::lookup("sqs-qa.s.qima-inc.com"));
+    $ip = (yield Dns::lookup("www.youzan.com"));
     assert(filter_var($ip, FILTER_VALIDATE_IP) === $ip);
 
     // fail

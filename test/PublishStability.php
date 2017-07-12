@@ -1,9 +1,9 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Test;
+namespace ZanPHP\NSQ\Test;
 
-use Zan\Framework\Components\Nsq\Producer;
-use Zan\Framework\Components\Nsq\SQS;
+use ZanPHP\NSQ\Producer;
+use ZanPHP\NSQ\NSQ;
 use Zan\Framework\Foundation\Coroutine\Task;
 
 require_once __DIR__ . "/boot.php";
@@ -20,7 +20,7 @@ $taskPub = function () {
         /* @var Producer $producer */
         while (true) {
             try {
-                $r = yield SQS::publish($topic, $payload);
+                $r = yield NSQ::publish($topic, $payload);
                 var_dump($r);
             } catch (\Throwable $e) {
             } catch (\Exception $e) {}

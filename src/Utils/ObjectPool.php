@@ -1,6 +1,6 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq\Utils;
+namespace ZanPHP\NSQ\Utils;
 
 
 /**

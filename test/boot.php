@@ -1,9 +1,9 @@
 <?php
 
-use Zan\Framework\Components\Nsq\NsqConfig;
-use Zan\Framework\Components\Nsq\Utils\Binary;
-use Zan\Framework\Components\Nsq\Utils\MemoryBuffer;
-use Zan\Framework\Components\Nsq\Utils\ObjectPool;
+use ZanPHP\NSQ\NsqConfig;
+use ZanPHP\NSQ\Utils\Binary;
+use ZanPHP\NSQ\Utils\MemoryBuffer;
+use ZanPHP\NSQ\Utils\ObjectPool;
 use Zan\Framework\Foundation\Core\Debug;
 
 require_once __DIR__ . "/../vendor/autoload.php";

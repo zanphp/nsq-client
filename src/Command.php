@@ -1,10 +1,10 @@
 <?php
 
-namespace Zan\Framework\Components\Nsq;
+namespace ZanPHP\NSQ;
 
 /**
  * Class Command
- * @package Zan\Framework\Components\Nsq
+ * @package ZanPHP\NSQ
  *
  * 命令注释来自 http://nsq.io/clients/tcp_protocol_spec.html#commands
  */
