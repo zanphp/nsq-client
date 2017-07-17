@@ -323,7 +323,7 @@ class Connection implements Async
         try {
             $this->delegate->onReceive($this, $bytes);
             $frame = new Frame($bytes);
-            $this->confirmIdentity($frame);
+            $this->confirmIdentify($frame);
         } catch (\Throwable $ex) {
         } catch (\Exception $ex) {
         }
@@ -334,7 +334,7 @@ class Connection implements Async
         }
     }
 
-    private function confirmIdentity(Frame $frame)
+    private function confirmIdentify(Frame $frame)
     {
         $frameType = $frame->getType();
         $frameBody = $frame->getBody();
