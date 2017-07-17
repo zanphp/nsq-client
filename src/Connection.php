@@ -114,7 +114,7 @@ class Connection implements Async
             "open_tcp_nodelay" => true,
         ]);
         $this->client->on("connect", $this->onConnect());
-        $this->client->on("receive", [$this, "onIdentity"]); // Cannot destroy active lambda function
+        $this->client->on("receive", [$this, "onIdentify"]); // Cannot destroy active lambda function
         $this->client->on("error", $this->onClose(true));
         $this->client->on("close", $this->onClose());
     }
@@ -317,7 +317,7 @@ class Connection implements Async
         };
     }
 
-    public function onIdentity(/** @noinspection PhpUnusedParameterInspection */
+    public function onIdentify(/** @noinspection PhpUnusedParameterInspection */
         SwooleClient $client, $bytes)
     {
         try {
