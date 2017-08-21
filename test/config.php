@@ -22,7 +22,7 @@ return [
 
     // ====================================== 以下选择性配置 ====================================
     // ======================================  identity  ======================================
-    "identity" => [
+    "identify" => [
         // Identifiers sent to nsqd representing this client
         "client_id" => gethostname(),
 

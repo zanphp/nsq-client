@@ -342,11 +342,11 @@ class Connection implements Async
             goto fail;
         }
 
-        $enableNegotiation = NsqConfig::getIdentity()["feature_negotiation"];
+        $enableNegotiation = NsqConfig::getIdentify()["feature_negotiation"];
         $isJson = $frameBody[0] === '{' && $enableNegotiation;
         if ($isJson) {
             $idResp = json_decode($frameBody, true, JSON_BIGINT_AS_STRING);
-            NsqConfig::negotiateIdentity($idResp);
+            NsqConfig::negotiateIdentify($idResp);
             goto success;
 
         } else {

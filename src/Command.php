@@ -28,7 +28,7 @@ class Command
      */
     public static function identify()
     {
-        $payload = json_encode(NsqConfig::getIdentity(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $payload = json_encode(NsqConfig::getIdentify(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         return "IDENTIFY \n" . pack('N', strlen($payload)) . $payload;
     }
 
