@@ -2,9 +2,9 @@
 
 namespace ZanPHP\NSQ\Utils;
 
-use Zan\Framework\Foundation\Contract\Async;
-use Zan\Framework\Network\Connection\Exception\ConnectTimeoutException;
-use Zan\Framework\Network\Server\Timer\Timer;
+use ZanPHP\ConnectionPool\Exception\ConnectTimeoutException;
+use ZanPHP\Coroutine\Contract\Async;
+use ZanPHP\Timer\Timer;
 
 class Dns implements Async
 {

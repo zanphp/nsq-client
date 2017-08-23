@@ -3,7 +3,7 @@
 namespace ZanPHP\NSQ;
 
 
-use Zan\Framework\Foundation\Exception\ZanException;
+use ZanPHP\Exception\ZanException;
 
 class NsqException extends ZanException
 {

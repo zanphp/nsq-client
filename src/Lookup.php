@@ -2,11 +2,11 @@
 
 namespace ZanPHP\NSQ;
 
+use ZanPHP\Coroutine\Task;
+use ZanPHP\HttpClient\HttpClient;
+use ZanPHP\HttpClient\Response;
 use ZanPHP\NSQ\Contract\NsqdDelegate;
-use Zan\Framework\Foundation\Coroutine\Task;
-use Zan\Framework\Network\Common\HttpClient;
-use Zan\Framework\Network\Common\Response;
-use Zan\Framework\Network\Server\Timer\Timer;
+use ZanPHP\Timer\Timer;
 
 
 class Lookup
@@ -527,7 +527,7 @@ class Lookup
     {
         Command::checkTopicChannelName($topic);
 
-        /* @var \Zan\Framework\Network\Common\Response $resp */
+        /* @var Response $resp */
         $host = parse_url($addr, PHP_URL_HOST);
         $port = parse_url($addr, PHP_URL_PORT) ?: 80;
 

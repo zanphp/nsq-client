@@ -5,7 +5,7 @@ namespace ZanPHP\NSQ;
 
 use ZanPHP\NSQ\Contract\MsgHandler;
 use ZanPHP\NSQ\Utils\Lock;
-use Zan\Framework\Utilities\Types\Json;
+use ZanPHP\Support\Json;
 
 class NSQ
 {

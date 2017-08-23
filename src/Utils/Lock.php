@@ -3,8 +3,8 @@
 namespace ZanPHP\NSQ\Utils;
 
 
-use Zan\Framework\Foundation\Contract\Async;
-use Zan\Framework\Foundation\Coroutine\Task;
+use ZanPHP\Coroutine\Contract\Async;
+use ZanPHP\Coroutine\Task;
 
 
 /**

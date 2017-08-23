@@ -3,14 +3,13 @@
 namespace ZanPHP\NSQ;
 
 use swoole_client as SwooleClient;
+use ZanPHP\Coroutine\Contract\Async;
+use ZanPHP\Coroutine\Task;
 use ZanPHP\NSQ\Contract\ConnDelegate;
 use ZanPHP\NSQ\Utils\Backoff;
 use ZanPHP\NSQ\Utils\Dns;
-use Zan\Framework\Foundation\Contract\Async;
-use Zan\Framework\Foundation\Coroutine\Task;
-use Zan\Framework\Network\Common\DnsClient;
-use Zan\Framework\Network\Server\Timer\Timer;
-use Zan\Framework\Utilities\Types\Time;
+use ZanPHP\Support\Time;
+use ZanPHP\Timer\Timer;
 
 class Connection implements Async
 {

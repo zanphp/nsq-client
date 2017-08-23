@@ -3,13 +3,12 @@
 namespace ZanPHP\NSQ;
 
 
+use ZanPHP\Config\Config;
+use ZanPHP\Contracts\Foundation\Bootable;
+use ZanPHP\Coroutine\Task;
 use ZanPHP\NSQ\Utils\Binary;
 use ZanPHP\NSQ\Utils\MemoryBuffer;
 use ZanPHP\NSQ\Utils\ObjectPool;
-use ZanPHP\NSQ\Utils\StringBuffer;
-use Zan\Framework\Contract\Network\Bootable;
-use Zan\Framework\Foundation\Core\Config;
-use Zan\Framework\Foundation\Coroutine\Task;
 
 class InitializeNSQ implements Bootable
 {

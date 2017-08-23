@@ -5,7 +5,7 @@ namespace ZanPHP\NSQ;
 use ZanPHP\NSQ\Contract\MsgDelegate;
 use ZanPHP\NSQ\Utils\Binary;
 use ZanPHP\NSQ\Utils\ObjectPool;
-use Zan\Framework\Utilities\Types\Time;
+use ZanPHP\Support\Time;
 
 
 class Message

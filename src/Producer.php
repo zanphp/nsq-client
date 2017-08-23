@@ -3,12 +3,11 @@
 namespace ZanPHP\NSQ;
 
 
+use ZanPHP\Coroutine\Contract\Async;
+use ZanPHP\Coroutine\Task;
 use ZanPHP\NSQ\Contract\ConnDelegate;
 use ZanPHP\NSQ\Contract\NsqdDelegate;
-use Zan\Framework\Foundation\Contract\Async;
-use Zan\Framework\Foundation\Core\Debug;
-use Zan\Framework\Foundation\Coroutine\Task;
-use Zan\Framework\Network\Server\Timer\Timer;
+use ZanPHP\Timer\Timer;
 
 
 class Producer implements ConnDelegate, NsqdDelegate, Async

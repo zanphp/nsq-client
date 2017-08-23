@@ -3,13 +3,13 @@
 namespace ZanPHP\NSQ;
 
 
+use ZanPHP\Coroutine\Task;
 use ZanPHP\NSQ\Contract\ConnDelegate;
 use ZanPHP\NSQ\Contract\MsgHandler;
 use ZanPHP\NSQ\Contract\NsqdDelegate;
 use ZanPHP\NSQ\Utils\Backoff;
-use Zan\Framework\Foundation\Coroutine\Task;
-use Zan\Framework\Network\Server\Timer\Timer;
-use Zan\Framework\Utilities\Types\Time;
+use ZanPHP\Support\Time;
+use ZanPHP\Timer\Timer;
 
 
 class Consumer implements ConnDelegate, NsqdDelegate

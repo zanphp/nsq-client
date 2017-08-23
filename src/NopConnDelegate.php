@@ -3,8 +3,7 @@
 namespace ZanPHP\NSQ;
 
 use ZanPHP\NSQ\Contract\ConnDelegate;
-use Zan\Framework\Foundation\Core\Debug;
-use Zan\Framework\Utilities\DesignPattern\Singleton;
+use ZanPHP\Support\Singleton;
 
 class NopConnDelegate implements ConnDelegate
 {
