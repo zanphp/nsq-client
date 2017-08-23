@@ -1,5 +1,5 @@
 {
-    "name": "zanphp/nsq-client",
+    "name": "php-lib/nsq-client",
     "require": {
         "zanphp/zan": "dev-master"
     },
